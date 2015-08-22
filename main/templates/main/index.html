@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.8/semantic.js"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.8/semantic.css">
    <meta charset="UTF-8">
    <title></title>
+   <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
 </head>
 <body>
 <div class="ui middle aligned center aligned grid">
    <div class="column">
-      <h2 class="ui teal header">
+      <h2 class="ui blue header">
          <div class="content">MoneyViz Login</div>
       </h2>
       <form class="ui large form">
@@ -26,7 +41,7 @@
                   <input type="password" placeholder="Password" name="password"></input>
                </div>
             </div>
-            <div class="ui fluid large teal submit button">Login</div>
+            <div class="ui fluid large blue submit button">Login</div>
          </div>
       </form>
    </div>
