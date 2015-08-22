@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.8/semantic.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.8/semantic.css">
    <meta charset="UTF-8">
    <title></title>
 </head>
 <body>
-   Hello World
+<div class="ui middle aligned center aligned grid">
+   <div class="column">
+      <h2 class="ui teal header">
+         <div class="content">MoneyViz Login</div>
+      </h2>
+      <form class="ui large form">
+         <div class="stacked segment">
+            <div class="field">
+               <div class="ui left icon input">
+                  <i class="user icon"></i>
+                  <input type="text" placeholder="Username" name="username"></input>
+               </div>
+            </div>
+            <div class="field">
+               <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <input type="password" placeholder="Password" name="password"></input>
+               </div>
+            </div>
+            <div class="ui fluid large teal submit button">Login</div>
+         </div>
+      </form>
+   </div>
+</div>
 </body>
 </html>
