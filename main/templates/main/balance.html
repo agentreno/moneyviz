@@ -1,1 +1,43 @@
-Balance!
+{% load staticfiles %}
+<style type="text/css" scoped>
+   .axis path,
+   .axis line {
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+   }
+   .axis text {
+      font-family: sans-serif;
+      font-size: 11px;
+   }
+   #tooltip {
+      position: absolute;
+      width: 200px;
+      height: auto;
+      padding: 10px;
+      background-color: white;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+      -moz-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+      box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+      pointer-events: none;
+   }
+   #tooltip.hidden {
+      display: none;
+   }
+   #tooltip p {
+      margin: 0;
+      font-family: sans-serif;
+      font-size: 16px;
+      line-height: 20px;
+   }
+</style>
+<input type="file" accept=".csv" id="fileinput">
+<div id="tooltip" class="hidden">
+   <p><strong><span id="itemdesc">Item</span></strong></p>
+   <p><span id="value">100</span></p>
+</div>
+<div id="graphspace"></div>
+<script src="{% static "js/balance-bargraph.js" %}"></script>
