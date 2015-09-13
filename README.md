@@ -1,5 +1,7 @@
 # moneyviz
 
-First, run *pip install -r requirements.txt* to install all dependencies.
-
-To start the site, run *python manage.py runserver*
+Run these two commands to install dependencies and start the site:
+```
+pip install -r requirements.txt
+python manage.py runserver
+```
