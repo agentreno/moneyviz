@@ -105,6 +105,14 @@ STATICFILES_DIRS = (
    os.path.join(BASE_DIR, "static"),
 )
 
+LOGDIR = os.path.join(BASE_DIR, 'logs')
+LOGFILE = os.path.join(LOGDIR, 'site.log')
+if not os.path.exists(LOGDIR):
+   os.makedirs(LOGDIR)
+
+if not os.path.isfile(LOGFILE):
+   open(LOGFILE, 'w').close()
+
 LOGGING = {
    'version' : 1,
    'disable_existing_loggers' : False,
@@ -117,7 +125,7 @@ LOGGING = {
       'file' : {
          'level' : 'DEBUG',
          'class' : 'logging.FileHandler',
-         'filename' : os.path.join(BASE_DIR, 'logs', 'site.log'),
+         'filename' : LOGFILE,
          'formatter' : 'simple',
       }
    },
