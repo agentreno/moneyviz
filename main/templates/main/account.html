@@ -12,20 +12,22 @@
       </div>
       <div class="row">
          <div class="four wide column">
-            <form class="ui form">
+            <form class="ui form" method="POST" action="updateUserInfo">
+               {% csrf_token %}
                <div class="field">
                   <label>First name</label>
-                  <input type="text" name="first-name" value="Current name">
+                  <input type="text" name="first_name" value={{user.first_name}} required>
                </div>
                <div class="field">
                   <label>Last name</label>
-                  <input type="text" name="last-name" value="Current last name">
+                  <input type="text" name="last_name" value={{user.last_name}}>
                </div>
                <div class="field">
                   <label>Email address</label>
-                  <input type="email" name="email" value="Current@email.com">
+                  <input type="email" name="email" value={{user.email}} required>
                </div>
                <button class="ui button" type="submit">Update</button>
+               </div>
             </form>
          </div>
       </div>

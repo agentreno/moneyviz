@@ -41,3 +41,16 @@ def servePartial(request, partialname):
 def doLogout(request):
    logout(request)
    return redirect('/login')
+
+@login_required(login_url = '/login')
+def updateUserInfo(request):
+   if request.method == "POST":
+      first_name = request.POST['first_name']
+      last_name = request.POST['last_name']
+      email = request.POST['email']
+      user = request.user
+      user.first_name = first_name
+      user.last_name = last_name
+      user.email = email
+      user.save()
+   return redirect('/')
