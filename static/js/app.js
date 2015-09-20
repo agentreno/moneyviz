@@ -10,6 +10,10 @@
          .state('balance', {
             url: '/',
             templateUrl: 'partials/balance.html',
+         })
+         .state('account', {
+            url: '/',
+            templateUrl: 'partials/account.html',
          });
    });
 })();
