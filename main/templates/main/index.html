@@ -16,13 +16,22 @@
 <body>
    <div class="ui inverted blue menu">
       <a class="item" ui-sref="home">Home</a>
-      <a class="item" ui-sref="balance">Balance</a>
+      <a class="item" ui-sref="balance">
+         <i class="bar chart icon"></i>
+         Balance
+      </a>
       <div class="right menu">
          <div class="ui simple dropdown item">
-            <span class="text">Account</span>
-            <i class="dropdown icon"></i>
+            <div ui-sref="account">
+               <i class="user icon"></i>
+               <span class="text">Account</span>
+               <i class="dropdown icon"></i>
+            </div>
             <div class="menu">
-               <a class="item" ui-sref="account-personal">Personal</a>
+               <a class="item" ui-sref="account-settings">
+                  <i class="settings icon"></i>
+                  Settings
+               </a>
             </div>
          </div>
          <a class="item" href="doLogout"><i class="sign out icon"></i>Logout</a>

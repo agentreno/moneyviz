@@ -1,0 +1,64 @@
+<div class="ui segment">
+   <div class="ui medium breadcrumb">
+      <a class="section" ui-sref="account">Account</a>
+      <i class="right chevron icon divider"></i>
+      <div class="active section">Settings</div>
+   </div>
+   <div class="ui huge header">
+      <i class="settings icon"></i>
+      Account Settings
+   </div>
+   <div class="ui grid">
+      <div class="row"></div>
+      <div class="row">
+         <div class="four wide column">
+            <div class="ui dividing header">
+               Personal
+            </div>
+         </div>
+         <div class="four wide column">
+            <div class="ui dividing header">
+               Change Password
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="four wide column">
+            <form class="ui form" method="POST" action="updateUserInfo">
+               {% csrf_token %}
+               <div class="field">
+                  <label>First name</label>
+                  <input type="text" name="first_name" pattern="\D*" title="Enter a valid name" value={{user.first_name}} required>
+               </div>
+               <div class="field">
+                  <label>Last name</label>
+                  <input type="text" name="last_name" pattern="\D*" title="Enter a valid name" value={{user.last_name}}>
+               </div>
+               <div class="field">
+                  <label>Email address</label>
+                  <input type="email" name="email" value={{user.email}} required>
+               </div>
+               <button class="ui button" type="submit">Update</button>
+            </form>
+         </div>
+         <div class="four wide column">
+            <form class="ui form" method="POST" action="updateUserPassword">
+               {% csrf_token %}
+               <div class="field">
+                  <label>Current password</label>
+                  <input type="password" name="current_password" required>
+               </div>
+               <div class="field">
+                  <label>New password</label>
+                  <input type="password" name="new_password" required>
+               </div>
+               <div class="field">
+                  <label>Confirm new password</label>
+                  <input type="password" name="new_password_confirm" title="Must be at least 6 characters long" pattern=".{6}" required>
+               </div>
+               <button class="ui button" type="submit">Update</button>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
