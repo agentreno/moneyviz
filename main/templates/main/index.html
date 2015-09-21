@@ -18,7 +18,13 @@
       <a class="item" ui-sref="home">Home</a>
       <a class="item" ui-sref="balance">Balance</a>
       <div class="right menu">
-         <a class="item" ui-sref="account">Account</a>
+         <div class="ui simple dropdown item">
+            <span class="text">Account</span>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+               <a class="item" ui-sref="account-personal">Personal</a>
+            </div>
+         </div>
          <a class="item" href="doLogout"><i class="sign out icon"></i>Logout</a>
       </div>
    </div>

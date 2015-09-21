@@ -11,9 +11,9 @@
             url: '/',
             templateUrl: 'partials/balance.html',
          })
-         .state('account', {
+         .state('account-personal', {
             url: '/',
-            templateUrl: 'partials/account.html',
+            templateUrl: 'partials/account-personal.html',
          });
    });
 })();
