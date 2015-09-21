@@ -49,8 +49,8 @@ def updateUserInfo(request):
       last_name = request.POST['last_name']
       email = request.POST['email']
       user = request.user
-      user.first_name = first_name
-      user.last_name = last_name
+      user.first_name = first_name.strip()
+      user.last_name = last_name.strip()
       user.email = email
       user.save()
    return redirect('/')
