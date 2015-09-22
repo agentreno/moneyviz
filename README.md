@@ -7,6 +7,7 @@ Alternatively, contact Karl to get a key for testing.
 Run these commands to install dependencies and start the site:
 ```
 pip install -r requirements.txt
+python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
