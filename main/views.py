@@ -54,3 +54,17 @@ def updateUserInfo(request):
       user.email = email
       user.save()
    return redirect('/')
+   
+@login_required(login_url = '/login')
+def updateUserPassword(request):
+   if request.method == "POST":
+      current_password = request.POST['current_password']
+      new_password = request.POST['new_password']
+      new_password_confirm = request.POST['new_password_confirm']
+      user = request.user
+      if user.check_password(current_password) and new_password == new_password_confirm:
+         user.set_password(new_password)
+         user.save()
+         user_auth = authenticate(username=user.username, password=new_password)
+         login(request, user_auth)
+   return redirect('/')

@@ -7,5 +7,6 @@ urlpatterns = [
    url(r'^doLogin$', views.doLogin),
    url(r'^doLogout$', views.doLogout),
    url(r'^updateUserInfo', views.updateUserInfo),
+   url(r'^updateUserPassword', views.updateUserPassword),
    url(r'^partials/([a-zA-Z|-]+).html$', views.servePartial),
 ]

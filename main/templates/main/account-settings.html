@@ -28,11 +28,11 @@
                {% csrf_token %}
                <div class="field">
                   <label>First name</label>
-                  <input type="text" name="first_name" pattern="\D*" title="Enter a valid name" value={{user.first_name}} required>
+                  <input type="text" name="first_name" pattern="\D*" title="No numbers please" value={{user.first_name}} required>
                </div>
                <div class="field">
                   <label>Last name</label>
-                  <input type="text" name="last_name" pattern="\D*" title="Enter a valid name" value={{user.last_name}}>
+                  <input type="text" name="last_name" pattern="\D*" title="No numbers please" value={{user.last_name}}>
                </div>
                <div class="field">
                   <label>Email address</label>
@@ -50,11 +50,11 @@
                </div>
                <div class="field">
                   <label>New password</label>
-                  <input type="password" name="new_password" required>
+                  <input type="password" name="new_password" title="Must be at least 6 characters long" onchange="form.new_password_confirm.pattern = this.value;" pattern=".{6,}" required>
                </div>
                <div class="field">
                   <label>Confirm new password</label>
-                  <input type="password" name="new_password_confirm" title="Must be at least 6 characters long" pattern=".{6}" required>
+                  <input type="password" name="new_password_confirm" title="New passwords must match" required>
                </div>
                <button class="ui button" type="submit">Update</button>
             </form>
