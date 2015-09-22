@@ -1,5 +1,6 @@
 <script>
    $(document).ready(function(){
+      var settings_item_original = $('#settings-item')
       $('.ui.accordion')
          .accordion({onChange: function(){
             var section = $('.ui.accordion .title.active').data("section");
@@ -9,9 +10,14 @@
             } else {
                new_crumb = '<i class="right chevron icon divider"></i><div class="active section">' + section + '</div>';
             }
-            $('.ui.breadcrumb').find('.active.section').nextAll().remove();
-            $(new_crumb)
-               .insertAfter($('.ui.breadcrumb').find('.active.section'));
+            settings_item = $('#settings-item')
+            settings_item.nextAll().remove();
+            if (settings_item.hasClass('active') || $('.ui.accordion').find('.active').length > 0){
+               settings_item.replaceWith('<a class="item" id="settings-item">Settings</a>');
+            } else {
+               settings_item.replaceWith(settings_item_original);
+            }
+            $(new_crumb).insertAfter($('#settings-item'));
          }
       });
    });
@@ -20,7 +26,7 @@
    <div class="ui medium breadcrumb">
       <a class="section" ui-sref="account">Account</a>
       <i class="right chevron icon divider"></i>
-      <div class="active section">Settings</div>
+      <div class="active section" id="settings-item">Settings</div>
    </div>
    <div class="ui huge header">
       <i class="settings icon"></i>
