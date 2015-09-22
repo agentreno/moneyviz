@@ -47,6 +47,9 @@
                onclick="document.doLogin.submit()">Login</div>
          </div>
       </form>
+      <div class="ui segment">
+         <a class="ui fluid large blue button" href="{% url 'social:begin' 'google-oauth2' %}?next=/">Login with Google</a>
+      </div>
    </div>
 </div>
 </body>

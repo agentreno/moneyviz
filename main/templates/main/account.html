@@ -12,18 +12,19 @@
       </div>
       <div class="row">
          <div class="four wide column">
+            <img class="ui small left floated image" src="{{ user.googleinfo.avatar_url }}">
             <form class="ui form">
                <div class="field">
                   <label>First name</label>
-                  <input type="text" name="first-name" value="Current name">
+                  <input type="text" name="first-name" value="{{ user.first_name }}">
                </div>
                <div class="field">
                   <label>Last name</label>
-                  <input type="text" name="last-name" value="Current last name">
+                  <input type="text" name="last-name" value="{{ user.last_name }}">
                </div>
                <div class="field">
                   <label>Email address</label>
-                  <input type="email" name="email" value="Current@email.com">
+                  <input type="email" name="email" value="{{ user.email }}">
                </div>
                <button class="ui button" type="submit">Update</button>
             </form>
