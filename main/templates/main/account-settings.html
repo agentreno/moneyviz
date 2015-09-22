@@ -1,3 +1,21 @@
+<script>
+   $(document).ready(function(){
+      $('.ui.accordion')
+         .accordion({onChange: function(){
+            var section = $('.ui.accordion .title.active').data("section");
+            var new_crumb
+            if (section === undefined){
+               new_crumb = "";
+            } else {
+               new_crumb = '<i class="right chevron icon divider"></i><div class="active section">' + section + '</div>';
+            }
+            $('.ui.breadcrumb').find('.active.section').nextAll().remove();
+            $(new_crumb)
+               .insertAfter($('.ui.breadcrumb').find('.active.section'));
+         }
+      });
+   });
+</script>
 <div class="ui segment">
    <div class="ui medium breadcrumb">
       <a class="section" ui-sref="account">Account</a>
@@ -8,57 +26,50 @@
       <i class="settings icon"></i>
       Account Settings
    </div>
-   <div class="ui grid">
-      <div class="row"></div>
-      <div class="row">
-         <div class="four wide column">
-            <div class="ui dividing header">
-               Personal
-            </div>
-         </div>
-         <div class="four wide column">
-            <div class="ui dividing header">
-               Change Password
-            </div>
-         </div>
+   <div class="ui accordion">
+      <div class="title" data-section="Personal details">
+         <i class="dropdown icon"></i>
+         Personal details
       </div>
-      <div class="row">
-         <div class="four wide column">
-            <form class="ui form" method="POST" action="updateUserInfo">
-               {% csrf_token %}
-               <div class="field">
-                  <label>First name</label>
-                  <input type="text" name="first_name" pattern="\D*" title="No numbers please" value={{user.first_name}} required>
-               </div>
-               <div class="field">
-                  <label>Last name</label>
-                  <input type="text" name="last_name" pattern="\D*" title="No numbers please" value={{user.last_name}}>
-               </div>
-               <div class="field">
-                  <label>Email address</label>
-                  <input type="email" name="email" value={{user.email}} required>
-               </div>
-               <button class="ui button" type="submit">Update</button>
-            </form>
-         </div>
-         <div class="four wide column">
-            <form class="ui form" method="POST" action="updateUserPassword">
-               {% csrf_token %}
-               <div class="field">
-                  <label>Current password</label>
-                  <input type="password" name="current_password" required>
-               </div>
-               <div class="field">
-                  <label>New password</label>
-                  <input type="password" name="new_password" title="Must be at least 6 characters long" onchange="form.new_password_confirm.pattern = this.value;" pattern=".{6,}" required>
-               </div>
-               <div class="field">
-                  <label>Confirm new password</label>
-                  <input type="password" name="new_password_confirm" title="New passwords must match" required>
-               </div>
-               <button class="ui button" type="submit">Update</button>
-            </form>
-         </div>
+      <div class="content">
+         <form class="ui form" method="POST" action="updateUserInfo">
+            {% csrf_token %}
+            <div class="field">
+               <label>First name</label>
+               <input type="text" name="first_name" pattern="\D*" title="No numbers please" value={{user.first_name}} required>
+            </div>
+            <div class="field">
+               <label>Last name</label>
+               <input type="text" name="last_name" pattern="\D*" title="No numbers please" value={{user.last_name}}>
+            </div>
+            <div class="field">
+               <label>Email address</label>
+               <input type="email" name="email" value={{user.email}} required>
+            </div>
+            <button class="ui button" type="submit">Update</button>
+         </form>
+      </div>
+      <div class="title" data-section="Password">
+         <i class="dropdown icon"></i>
+         Password
+      </div>
+      <div class="content">
+         <form class="ui form" method="POST" action="updateUserPassword">
+            {% csrf_token %}
+            <div class="field">
+               <label>Current password</label>
+               <input type="password" name="current_password" required>
+            </div>
+            <div class="field">
+               <label>New password</label>
+               <input type="password" name="new_password" title="Must be at least 6 characters long" onchange="form.new_password_confirm.pattern = this.value;" pattern=".{6,}" required>
+            </div>
+            <div class="field">
+               <label>Confirm new password</label>
+               <input type="password" name="new_password_confirm" title="New passwords must match" required>
+            </div>
+            <button class="ui button" type="submit">Update</button>
+         </form>
       </div>
    </div>
 </div>
