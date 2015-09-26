@@ -49,7 +49,7 @@ def doLogout(request):
    logout(request)
    return redirect('/loginpage')
 
-@login_required(login_url = '/login')
+@login_required(login_url = '/loginpage')
 def updateUserInfo(request):
    if request.method == "POST":
       first_name = request.POST['first_name']
@@ -62,7 +62,7 @@ def updateUserInfo(request):
       user.save()
    return redirect('/')
    
-@login_required(login_url = '/login')
+@login_required(login_url = '/loginpage')
 def updateUserPassword(request):
    if request.method == "POST":
       current_password = request.POST['current_password']
