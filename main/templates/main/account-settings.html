@@ -1,23 +1,25 @@
 <script>
    $(document).ready(function(){
-      var settings_item_original = $('#settings-item')
       $('.ui.accordion')
-         .accordion({onChange: function(){
-            var section = $('.ui.accordion .title.active').data("section");
-            var new_crumb
-            if (section === undefined){
-               new_crumb = "";
-            } else {
-               new_crumb = '<i class="right chevron icon divider"></i><div class="active section">' + section + '</div>';
-            }
-            settings_item = $('#settings-item')
-            settings_item.nextAll().remove();
-            if (settings_item.hasClass('active') || $('.ui.accordion').find('.active').length > 0){
-               settings_item.replaceWith('<a class="item" id="settings-item">Settings</a>');
-            } else {
-               settings_item.replaceWith(settings_item_original);
-            }
-            $(new_crumb).insertAfter($('#settings-item'));
+         .accordion({onOpen: function(){
+            $(this).addClass('open');
+            var top = $('.ui.breadcrumb').find('.active.section');
+            top.nextAll().remove();
+            top.removeClass('active');
+            $('<i class="right chevron icon divider"></i><div class="active section">' +
+               $('.ui.accordion .title.active').last().data('section') + '</div>').insertAfter(top);
+         },
+         onOpening: function(){
+            $('.ui.accordion').accordion('close', $(this).siblings('.open').index('.content'));
+         },
+         onClosing: function(){
+            $(this).removeClass('open');
+            $(this).after().find('.content.active').each(function(){
+               $('.ui.accordion').accordion('close', $(this).index('.content'));
+            });
+            var second = $('.ui.breadcrumb').find('.section:not(.active)').last();
+            second.nextAll().remove();
+            second.removeClass().addClass('active section');
          }
       });
    });
@@ -26,7 +28,7 @@
    <div class="ui medium breadcrumb">
       <a class="section" ui-sref="account">Account</a>
       <i class="right chevron icon divider"></i>
-      <div class="active section" id="settings-item">Settings</div>
+      <div class="active section">Settings</div>
    </div>
    <div class="ui huge header">
       <i class="settings icon"></i>
