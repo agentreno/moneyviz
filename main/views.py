@@ -51,10 +51,13 @@ def doLogout(request):
 
 @login_required(login_url = '/loginpage')
 def updateUserInfo(request):
-   if request.method == "POST":
-      first_name = request.POST['first_name']
-      last_name = request.POST['last_name']
-      email = request.POST['email']
+   if request.method == "POST" and \
+   "first_name" in request.POST and \
+   "last_name" in request.POST and \
+   "email" in request.POST:
+      first_name = request.POST["first_name"]
+      last_name = request.POST["last_name"]
+      email = request.POST["email"]
       user = request.user
       user.first_name = first_name.strip()
       user.last_name = last_name.strip()
@@ -64,7 +67,10 @@ def updateUserInfo(request):
    
 @login_required(login_url = '/loginpage')
 def updateUserPassword(request):
-   if request.method == "POST":
+   if request.method == "POST" and \
+   "current_password" in request.POST and \
+   "new_password" in request.POST and \
+   "new_password_confirm" in request.POST:
       current_password = request.POST['current_password']
       new_password = request.POST['new_password']
       new_password_confirm = request.POST['new_password_confirm']
