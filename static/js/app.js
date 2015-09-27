@@ -14,6 +14,10 @@
          .state('account', {
             url: '/',
             templateUrl: 'partials/account.html',
+         })
+         .state('account-settings', {
+            url: '/',
+            templateUrl: 'partials/account-settings.html',
          });
    });
 })();

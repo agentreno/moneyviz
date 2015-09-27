@@ -1,34 +1,15 @@
 <div class="ui segment">
-   <div class="ui huge header">Account</div>
-   <div class="ui grid">
-      <div class="row">
-      </div>
-      <div class="row">
-         <div class="five wide column">
-            <div class="ui dividing header">
-               Personal
-            </div>
-         </div>
-      </div>
-      <div class="row">
-         <div class="four wide column">
-            <img class="ui small left floated image" src="{{ user.googleinfo.avatar_url }}">
-            <form class="ui form">
-               <div class="field">
-                  <label>First name</label>
-                  <input type="text" name="first-name" value="{{ user.first_name }}">
-               </div>
-               <div class="field">
-                  <label>Last name</label>
-                  <input type="text" name="last-name" value="{{ user.last_name }}">
-               </div>
-               <div class="field">
-                  <label>Email address</label>
-                  <input type="email" name="email" value="{{ user.email }}">
-               </div>
-               <button class="ui button" type="submit">Update</button>
-            </form>
-         </div>
-      </div>
+   <div class="ui medium breadcrumb">
+      <a class="active section">Account</a>
+   </div>
+   <div class="ui huge header">
+      <i class="user icon"></i>
+      Account
+   </div>
+   <div class="ui vertical menu">
+      <a class="item" ui-sref="account-settings">
+         <i class="settings icon"></i>
+         Settings
+      </a>
    </div>
 </div>

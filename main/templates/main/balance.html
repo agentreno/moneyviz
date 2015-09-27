@@ -34,10 +34,12 @@
       line-height: 20px;
    }
 </style>
-<input type="file" accept=".csv" id="fileinput">
-<div id="tooltip" class="hidden">
-   <p><strong><span id="itemdesc">Item</span></strong></p>
-   <p><span id="value">100</span></p>
+<div class="ui segment">
+   <input type="file" accept=".csv" id="fileinput">
+   <div id="tooltip" class="hidden">
+      <p><strong><span id="itemdesc">Item</span></strong></p>
+      <p><span id="value">100</span></p>
+   </div>
+   <div id="graphspace"></div>
 </div>
-<div id="graphspace"></div>
 <script src="{% static "js/balance-bargraph.js" %}"></script>
