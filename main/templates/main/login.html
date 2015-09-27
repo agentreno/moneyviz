@@ -3,6 +3,7 @@
 <head>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.8/semantic.js"></script>
+   <script src="static/js/close-message.js"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.8/semantic.css">
    <meta charset="UTF-8">
    <title></title>
@@ -27,24 +28,30 @@
       <h2 class="ui blue header">
          <div class="content">MoneyViz Login</div>
       </h2>
+      {% if login_error %}
+         <div class="ui error message">
+            <i class="close icon"></i>
+            <div class="header">
+               Username and password do not match.
+            </div>
+         </div>
+      {% endif %}
       <form class="ui large form" method="POST" action="doLogin" name="doLogin">
          {% csrf_token %}
          <div class="stacked segment">
             <div class="field">
                <div class="ui left icon input">
                   <i class="user icon"></i>
-                  <input type="text" placeholder="Username" name="username"></input>
+                  <input type="text" placeholder="Username" name="username" required></input>
                </div>
             </div>
             <div class="field">
                <div class="ui left icon input">
                   <i class="lock icon"></i>
-                  <input type="password" placeholder="Password" name="password"
-                     onkeypress="if(event.keyCode == 13){ document.doLogin.submit(); }"></input>
+                  <input type="password" placeholder="Password" name="password" required></input>
                </div>
             </div>
-            <div class="ui fluid large blue submit button" 
-               onclick="document.doLogin.submit()">Login</div>
+            <button class="ui fluid large blue submit button" type="submit">Login</button>
          </div>
       </form>
       <div class="ui segment">
