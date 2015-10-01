@@ -34,7 +34,8 @@ def doLogin(request):
       return redirect('/')
    else:
       logger.info("Failed login")
-      return redirect('/loginpage')
+      c = {'login_error': True}
+      return render(request, 'main/login.html', c)
 
 @login_required(login_url='/loginpage')
 def servePartial(request, partialname):
