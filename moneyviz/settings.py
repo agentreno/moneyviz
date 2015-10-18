@@ -164,3 +164,5 @@ LOGGING = {
 }
 
 SESSION_COOKIE_AGE = 7200
+
+LOGIN_URL='/loginpage'
