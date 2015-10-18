@@ -1,5 +1,5 @@
 import logging
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.template.context import RequestContext
@@ -7,15 +7,14 @@ from django.template.context import RequestContext
 logger = logging.getLogger(__name__)
 
 # Create your views here.
-@login_required(login_url='/loginpage')
+@login_required
 def index(request):
    return render(request, 'main/index.html')
 
 def loginpage(request):
-   context = RequestContext(request,
-         {'request' : request, 'user' : request.user})
-   return render_to_response('main/login.html',
-         context_instance=context)
+    return render(request,'main/login.html',
+        {'request' : request, 'user' : request.user}
+    )
 
 def doLogin(request):
    if not request.method == 'POST' or \
@@ -24,7 +23,7 @@ def doLogin(request):
       request.POST['username'] == "" or \
       request.POST['password'] == "":
          return redirect('/loginpage')
-   
+
    username = request.POST['username']
    password = request.POST['password']
    user = authenticate(username=username, password=password)
@@ -34,23 +33,22 @@ def doLogin(request):
       return redirect('/')
    else:
       logger.info("Failed login")
-      c = {'login_error': True}
-      return render(request, 'main/login.html', c)
+      return render(request, 'main/login.html',
+        {'login_error': True}
+      )
 
-@login_required(login_url='/loginpage')
+@login_required
 def servePartial(request, partialname):
-   context = RequestContext(request,
-         {'request' : request, 'user' : request.user})
-   return render_to_response('main/' + partialname + '.html',
-         context_instance=context)
+    return render(request, 'main/' + partialname + '.html',
+        {'request' : request, 'user' : request.user}
+    )
 
-
-@login_required(login_url='/loginpage')
+@login_required
 def doLogout(request):
    logout(request)
    return redirect('/loginpage')
 
-@login_required(login_url = '/loginpage')
+@login_required
 def updateUserInfo(request):
    if request.method == "POST" and \
    "first_name" in request.POST and \
@@ -65,8 +63,8 @@ def updateUserInfo(request):
       user.email = email
       user.save()
    return redirect('/')
-   
-@login_required(login_url = '/loginpage')
+
+@login_required
 def updateUserPassword(request):
    if request.method == "POST" and \
    "current_password" in request.POST and \
