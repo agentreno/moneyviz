@@ -5,4 +5,5 @@
 *.swp
 *.log
 *.csv
+!sample.csv
 /static/node_modules/
