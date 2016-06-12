@@ -38,11 +38,15 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'tastypie',
+    'corsheaders',
+    'transactionapi',
     'main',
     'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -166,3 +170,7 @@ LOGGING = {
 SESSION_COOKIE_AGE = 7200
 
 LOGIN_URL='/loginpage'
+
+# Tastypie config
+APPEND_SLASH=False
+TASTYPIE_ALLOW_MISSING_SLASH=True
