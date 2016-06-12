@@ -20,4 +20,17 @@ pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
+python manage.py createsuperuser
+python manage.py backfill_api_keys
 ```
+
+# Transaction API
+Documentation to follow. All requests are authenticated with API keys, using
+the HTTP Authorization header, in the format `ApiKey <username>:<apikey>`.
+
+The API key can be found on the User object: `user.api_key.key`
+
+There is a Postman collection export in the root of the project which can be
+used to make testing the API easier. Just install Postman, import this
+collection using the JSON file, and set the Postman environment variables for
+`url`, `user` and `apikey`.
