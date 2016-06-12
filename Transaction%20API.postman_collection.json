@@ -1,0 +1,161 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Transaction API",
+		"_postman_id": "52d5e387-7c32-0e8b-1082-bd25ac26f8ae",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Transactions",
+			"request": {
+				"url": "http://{{url}}/api/v1/transactions",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{user}}:{{apikey}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"amount\": \"-1.01\",\n  \"balance\": \"-1.01\",\n  \"date\": \"2016-04-10T07:29:45.232455\",\n  \"description\": \"test transaction\",\n  \"id\": 1,\n  \"resource_uri\": \"/api/v1/transactions/1/\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get first transaction",
+			"request": {
+				"url": "http://{{url}}/api/v1/transactions/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{user}}:{{apikey}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"amount\": \"-1.03\",\n  \"balance\": \"-1.03\",\n  \"date\": \"2016-04-10T07:29:45.232455\",\n  \"description\": \"test transaction\",\n  \"id\": 1,\n  \"resource_uri\": \"/api/v1/transactions/1/\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create new transaction",
+			"request": {
+				"url": "http://{{url}}/api/v1/transactions",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{user}}:{{apikey}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"amount\": \"-1.00\",\n  \"balance\": \"-1.00\",\n  \"date\": \"2016-04-10T07:29:45.232455\",\n  \"description\": \"another test transaction\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Modify a transaction",
+			"request": {
+				"url": "http://{{url}}/api/v1/transactions/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{user}}:{{apikey}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"amount\": \"-1.00\",\n  \"balance\": \"-1.00\",\n  \"date\": \"2016-04-10T07:29:45.232455\",\n  \"description\": \"a modified transaction\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk create transactions patch",
+			"request": {
+				"url": "http://{{url}}/api/v1/transactions",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{user}}:{{apikey}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"objects\": [\n        {\n          \"amount\": \"-1.00\",\n          \"balance\": \"-1.00\",\n          \"date\": \"2016-04-10T07:29:45.232455\",\n          \"description\": \"bulk first transaction\"\n        },\n        {\n          \"amount\": \"-1.00\",\n          \"balance\": \"-1.00\",\n          \"date\": \"2016-04-10T07:29:45.232455\",\n          \"description\": \"bulk second transaction\"\n        }\n    ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a transaction",
+			"request": {
+				"url": "http://{{url}}/api/v1/transactions/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{user}}:{{apikey}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
