@@ -21,6 +21,13 @@
          Balance
       </a>
       <div class="right menu">
+         <div ng-controller="UploadController as uc">
+            <input type="file" name="uploadFileInput" id="uploadFileInput" style="display: none">
+            <label for="uploadFileInput" class="item">
+               <i class="upload icon"></i>
+               Upload
+            </label>
+         </div>
          <div class="ui simple dropdown item" style="padding-top:0;padding-bottom:0">
             <div ui-sref="account">
                <img class="ui avatar image" src="{{ user.googleinfo.avatar_url }}">
