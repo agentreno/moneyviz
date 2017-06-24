@@ -1,7 +1,14 @@
 # moneyviz
 
 # Local development environment
+
 Run these commands to install dependencies and start the site.
+
+## The easy way
+
+Use vagrant. Just `vagrant up`! The web app will be accessible at localhost:8000.
+
+## The hard way
 
 Install the Heroku CLI app and pipenv:
 ```
@@ -42,6 +49,7 @@ heroku local
 ```
 
 # Transaction API
+
 Documentation to follow. All requests are authenticated with API keys, using
 the HTTP Authorization header, in the format `ApiKey <username>:<apikey>`.
 

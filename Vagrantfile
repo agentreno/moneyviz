@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/xenial64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  config.vm.network "forwarded_port", guest: 8000, host: 8000
+  config.vm.network "forwarded_port", guest: 5000, host: 5000
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -66,14 +66,28 @@ Vagrant.configure(2) do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     echo "Updating apt repos"
+    wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
     sudo apt-get update >/dev/null 2>&1
     echo "Installing dependencies"
-    sudo apt-get install -y python3-pip >/dev/null 2>&1
-    sudo pip3 install -r /vagrant/requirements.txt >/dev/null 2>&1
+    sudo apt-get install -y language-pack-en-base
+    sudo dpkg-reconfigure locales
+    sudo apt-get install -y heroku
+    sudo apt-get install -y python-pip >/dev/null 2>&1
+    cd /vagrant
+    pip install pipenv >/dev/null 2>&1
+    pipenv install >/dev/null 2>&1
+    echo "Installing database"
+    sudo apt-get install -y postgresql postgresql-contrib
+    sudo -u postgres psql -c 'CREATE DATABASE moneyviz' 
+    sudo -u postgres psql -c "CREATE USER moneyviz WITH PASSWORD 'password'" 
+    sudo -u postgres psql -c "ALTER ROLE moneyviz SET client_encoding TO 'utf8'"
+    sudo -u postgres psql -c "ALTER ROLE moneyviz SET timezone TO 'UTC'"
+    sudo -u postgres psql -c 'GRANT ALL PRIVILEGES ON DATABASE moneyviz TO moneyviz' 
     echo "Making database migrations and starting development server"
-    python3 /vagrant/manage.py makemigrations >/dev/null 2>&1
-    python3 /vagrant/manage.py migrate >/dev/null 2>&1
-    python3 /vagrant/manage.py runserver 0.0.0.0:8000 >/dev/null 2>&1 &
+    pipenv shell
+    python /vagrant/manage.py migrate auth >/dev/null 2>&1
+    python /vagrant/manage.py migrate >/dev/null 2>&1
+    heroku local >/dev/null 2>&1 &
     echo "Development server running"
   SHELL
 end
