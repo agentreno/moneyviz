@@ -1,0 +1,74 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "563a322bf1dee165ab36a3ffea6ba27a7e9add51421fc2b48619f7d43e17dac6"
+        },
+        "requires": {},
+        "sources": [
+            {
+                "url": "https://pypi.python.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "certifi": {
+            "version": "==2017.4.17"
+        },
+        "chardet": {
+            "version": "==3.0.4"
+        },
+        "defusedxml": {
+            "version": "==0.5.0"
+        },
+        "django": {
+            "version": "==1.8.4"
+        },
+        "django-cors-headers": {
+            "version": "==2.1.0"
+        },
+        "django-extensions": {
+            "version": "==1.5.6"
+        },
+        "django-pdb": {
+            "version": "==0.4.2"
+        },
+        "django-tastypie": {
+            "version": "==0.13.3"
+        },
+        "idna": {
+            "version": "==2.5"
+        },
+        "oauthlib": {
+            "version": "==2.0.2"
+        },
+        "pyjwt": {
+            "version": "==1.5.2"
+        },
+        "python-dateutil": {
+            "version": "==2.6.0"
+        },
+        "python-mimeparse": {
+            "version": "==1.6.0"
+        },
+        "python-social-auth": {
+            "version": "==0.2.12"
+        },
+        "python3-openid": {
+            "version": "==3.1.0"
+        },
+        "requests": {
+            "version": "==2.7.0"
+        },
+        "requests-oauthlib": {
+            "version": "==0.5.0"
+        },
+        "six": {
+            "version": "==1.10.0"
+        },
+        "urllib3": {
+            "version": "==1.21.1"
+        }
+    },
+    "develop": {}
+}
