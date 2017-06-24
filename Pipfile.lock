@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "563a322bf1dee165ab36a3ffea6ba27a7e9add51421fc2b48619f7d43e17dac6"
+            "sha256": "16ce68f075ca36641bacf764eb52e4100965f5247850f6d365ffe705489a18ef"
         },
         "requires": {},
         "sources": [
@@ -18,8 +18,8 @@
         "chardet": {
             "version": "==3.0.4"
         },
-        "defusedxml": {
-            "version": "==0.5.0"
+        "dj-database-url": {
+            "version": "==0.4.2"
         },
         "django": {
             "version": "==1.8.4"
@@ -36,11 +36,20 @@
         "django-tastypie": {
             "version": "==0.13.3"
         },
+        "gunicorn": {
+            "version": "==19.7.1"
+        },
+        "heroku": {
+            "version": "==0.1.4"
+        },
         "idna": {
             "version": "==2.5"
         },
         "oauthlib": {
             "version": "==2.0.2"
+        },
+        "psycopg2": {
+            "version": "==2.7.1"
         },
         "pyjwt": {
             "version": "==1.5.2"
@@ -51,11 +60,11 @@
         "python-mimeparse": {
             "version": "==1.6.0"
         },
+        "python-openid": {
+            "version": "==2.2.5"
+        },
         "python-social-auth": {
             "version": "==0.2.12"
-        },
-        "python3-openid": {
-            "version": "==3.1.0"
         },
         "requests": {
             "version": "==2.7.0"
