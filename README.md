@@ -1,27 +1,44 @@
 # moneyviz
 
-Add valid Google OAuth key and secret to moneyviz/settings.py (the 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY and SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET variables).
-Alternatively, contact Karl to get a key for testing.
-
-# Vagrant development environment
-This method has the benefit of matching production most closely and should be 
-the preferred way to test locally.
-
-Just run 'vagrant up' in the root folder to use the Vagrantfile and provision a
-development VM accessible from the host on localhost:8000. Use 'vagrant 
-suspend' to keep the dev server running - there is currently no startup script,
-just a provisioning script.
-
 # Local development environment
-Run these commands to install dependencies and start the site:
+Run these commands to install dependencies and start the site.
+
+Install the Heroku CLI app and pipenv:
 ```
-pip install -r requirements.txt
+wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+sudo apt-get update
+sudo apt-get install heroku
+sudo pip install pipenv
+```
+
+To install a postgres database and set up a user:
+```
+sudo apt-get install postgresql postgresql-contrib
+sudo -u postgres psql
+CREATE DATABASE moneyviz;
+CREATE USER moneyviz WITH PASSWORD '<some password>';
+ALTER ROLE moneyviz SET client_encoding TO 'utf8';
+ALTER ROLE moneyviz SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE moneyviz TO moneyviz;
+\q (or CTRL+d)
+```
+
+Create a .env file in the project root:
+```
+export DATABASE_URL=postgres://moneyviz:password@localhost:5432/moneyviz
+export DEBUG=True
+```
+
+Install the requirements and set up the database:
+```
+pipenv install
+pipenv shell
 python manage.py makemigrations
+python manage.py migrate auth
 python manage.py migrate
-python manage.py runserver
 python manage.py createsuperuser
 python manage.py backfill_api_keys
+heroku local
 ```
 
 # Transaction API
