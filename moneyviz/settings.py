@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rsy0*v!+d54v6vmde7ht*5h=jd%3+%blrw7sw#)71di#wub*aj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = []
 
@@ -141,40 +141,40 @@ STATICFILES_DIRS = (
 LOGDIR = os.path.join(BASE_DIR, 'logs')
 LOGFILE = os.path.join(LOGDIR, 'site.log')
 if not os.path.exists(LOGDIR):
-   os.makedirs(LOGDIR)
+    os.makedirs(LOGDIR)
 
 if not os.path.isfile(LOGFILE):
-   open(LOGFILE, 'w').close()
+    open(LOGFILE, 'w').close()
 
 LOGGING = {
-   'version' : 1,
-   'disable_existing_loggers' : False,
-   'formatters' : {
-      'simple' : {
-         'format' : '%(levelname)s %(message)s',
-      },
-   },
-   'handlers' : {
-      'file' : {
-         'level' : 'DEBUG',
-         'class' : 'logging.FileHandler',
-         'filename' : LOGFILE,
-         'formatter' : 'simple',
-      }
-   },
-   'loggers' : {
-      'main' : {
-         'handlers' : ['file'],
-         'level' : 'DEBUG',
-         'propogate' : True,
-      }
-   }
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(levelname)s %(message)s',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': LOGFILE,
+            'formatter': 'simple',
+         }
+    },
+    'loggers': {
+        'main': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propogate': True,
+        }
+    }
 }
 
 SESSION_COOKIE_AGE = 7200
 
-LOGIN_URL='/loginpage'
+LOGIN_URL = '/loginpage'
 
 # Tastypie config
-APPEND_SLASH=False
-TASTYPIE_ALLOW_MISSING_SLASH=True
+APPEND_SLASH = False
+TASTYPIE_ALLOW_MISSING_SLASH = True
