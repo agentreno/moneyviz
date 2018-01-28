@@ -84,9 +84,8 @@ Vagrant.configure(2) do |config|
     sudo -u postgres psql -c "ALTER ROLE moneyviz SET timezone TO 'UTC'"
     sudo -u postgres psql -c 'GRANT ALL PRIVILEGES ON DATABASE moneyviz TO moneyviz' 
     echo "Making database migrations and starting development server"
-    pipenv shell
-    python /vagrant/manage.py migrate auth >/dev/null 2>&1
-    python /vagrant/manage.py migrate >/dev/null 2>&1
+    pipenv run python /vagrant/manage.py migrate auth >/dev/null 2>&1
+    pipenv run python /vagrant/manage.py migrate >/dev/null 2>&1
     heroku local >/dev/null 2>&1 &
     echo "Development server running"
   SHELL
